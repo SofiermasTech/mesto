@@ -1,0 +1,36 @@
+.profile__container {
+   display: flex;
+   align-items: center;
+}
+
+.button {
+   margin: 0;
+   padding: 0;
+   border: none;
+   background-color: #000;
+}
+
+.button__add {
+
+   width: 150px;
+   height: 50px;
+
+
+}
+
+.button__edit {
+   margin-left: 19px;
+   margin-bottom: 24px;
+   width: 24px;
+   height: 24px;
+
+
+}
+
+.button__like {
+   background-color: rgba(255, 255, 255, 0);
+   width: 22px;
+   height: 19px;
+
+
+}
