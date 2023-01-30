@@ -1,0 +1,19 @@
+.button__add {
+   width: 150px;
+   height: 50px;
+   background-image: url('../../../images/Add_Button.png');
+   margin-left: auto;
+   cursor: pointer;
+}
+
+.button__add:hover {
+   opacity: .6;
+}
+
+@media screen and (max-width: 760px) {
+   .button__add {
+      width: 282px;
+      background-image: url('../../../images/Add_Button_L.png');
+      margin: auto;
+   }
+}

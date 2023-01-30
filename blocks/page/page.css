@@ -12,3 +12,16 @@
    -ms-text-size-adjust: 100%;
    -moz-text-size-adjust: 100%;
 }
+
+@media screen and (max-width: 920px) {
+   .page {
+      padding-left: 30px;
+      padding-right: 30px;
+   }
+}
+
+@media screen and (max-width: 425px) {
+   .page {
+      padding: 0;
+   }
+}
