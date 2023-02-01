@@ -28,3 +28,5 @@
 @import url('../blocks/button/__like/button__like.css');
 @import url('../blocks/button/__edit/button__edit.css');
 @import url('../blocks/button/__add/button__add.css');
+
+@import url('../blocks/popup/popup.css');

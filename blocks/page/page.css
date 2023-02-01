@@ -1,8 +1,11 @@
 .page {
    min-width: 320px;
    min-height: 1217px;
+
+   
    margin: 0 auto;
    background-color: #000000;
+   background-size: 100%;
    box-sizing: border-box;
    font-family: 'Inter', 'Arial', sans-serif;
    color: #fff;
