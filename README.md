@@ -11,7 +11,10 @@
 * Реализована методология BEM Nested
 
 **Использованы для верстки**
-* В основновном Flex, @media, псевдоклассы, чуточку JS для popup.
+* HTML, CSS (в основновном Flex, @media, псевдоклассы), чуточку JS для popup.
 
 ### Ссылка на GitHub Pages
-* [https://sofiermastech.github.io/russian-travel/index.html]
+* [https://sofiermastech.github.io/mesto/]
+
+## Автор
+Sofiya Ermakova
