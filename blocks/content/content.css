@@ -3,9 +3,3 @@
    min-width: 282px;
    margin: 0 auto;
 }
-
-@media screen and (max-width: 550px) {
-   .content {
-      
-   }
-}

@@ -25,59 +25,59 @@
             <div class="profile__container">
                <div class="profile__info">
                   <h1 class="profile__name">Жак-Ив Кусто</h1>
-                  <p class="input__description">Исследователь океана</p>
+                  <p class="profile__job">Исследователь океана</p>
                </div>
-               <button type="button" class="button button__edit button__edit_type_active"></button>
+               <button type="button" class="button button_edit-profile"></button>
             </div>
-            <button type="button" class="button button__add"></button>
+            <button type="button" class="button button_add"></button>
          </section>
 
-         <section class="cards">
+         <section class="cards" aria-label="Места">
             <div class="card">
                <img src="./images/card__image_carachaevsk.jpg" alt="Природа Карачаевска." class="card__image">
                <div class="card__container">
                   <h2 class="card__description">Карачаевск</h2>
-                  <button class=" button button__like"><img src="./images/like_button.png"
+                  <button type="button" class="button button_like"><img src="./images/like_button.png"
                         alt="Кнопка нравится."></button>
                </div>
             </div>
             <div class="card">
-               <img src="./images/card__image_elbrus.jpg" alt="Природа Карачаевска." class="card__image">
+               <img src="./images/card__image_elbrus.jpg" alt="Горы, Эльбрус." class="card__image">
                <div class="card__container">
                   <h2 class="card__description">Гора Эльбрус</h2>
-                  <button class=" button button__like"><img src="./images/like_button.png"
+                  <button type="button" class="button button_like"><img src="./images/like_button.png"
                         alt="Кнопка нравится."></button>
                </div>
             </div>
             <div class="card">
-               <img src="./images/card__image_dombaj.jpg" alt="Природа Карачаевска." class="card__image">
+               <img src="./images/card__image_dombaj.jpg" alt="Дорога на Домбай." class="card__image">
                <div class="card__container">
                   <h2 class="card__description">Домбай</h2>
-                  <button class=" button button__like"><img src="./images/like_button.png"
+                  <button type="button" class="button button_like"><img src="./images/like_button.png"
                         alt="Кнопка нравится."></button>
                </div>
             </div>
             <div class="card">
-               <img src="./images/card__image_kamchatka.jpg" alt="Природа Карачаевска." class="card__image">
+               <img src="./images/card__image_kamchatka.jpg" alt="Вид с океана на горы Камчатки." class="card__image">
                <div class="card__container">
                   <h2 class="card__description">Петропавловск-Камчатский</h2>
-                  <button class=" button button__like"><img src="./images/like_button.png"
+                  <button type="button" class="button button_like"><img src="./images/like_button.png"
                         alt="Кнопка нравится."></button>
                </div>
             </div>
             <div class="card">
-               <img src="./images/card__image_baltijsk.jpg" alt="Природа Карачаевска." class="card__image">
+               <img src="./images/card__image_baltijsk.jpg" alt="Балтийское море." class="card__image">
                <div class="card__container">
                   <h2 class="card__description">Балтийск</h2>
-                  <button class=" button button__like"><img src="./images/like_button.png"
+                  <button type="button" class="button button_like"><img src="./images/like_button.png"
                         alt="Кнопка нравится."></button>
                </div>
             </div>
             <div class="card">
-               <img src="./images/card__image_karelia.jpg" alt="Природа Карачаевска." class="card__image">
+               <img src="./images/card__image_karelia.jpg" alt="Леса Карелии." class="card__image">
                <div class="card__container">
                   <h2 class="card__description">Карелия</h2>
-                  <button class=" button button__like"><img src="./images/like_button.png"
+                  <button type="button" class="button button_like"><img src="./images/like_button.png"
                         alt="Кнопка нравится."></button>
                </div>
             </div>
@@ -85,13 +85,13 @@
 
          <section class="popup">
             <div class="popup__container">
-               <button class=" button button__close"></button>
+               <button class="button button_popup-close"></button>
                <h2 class="popup__title">Редактировать профиль</h2>
                <form class="popup__form">
-                  <input type="text" name="autor" value="Жак-Ив Кусто" class="popup__input popup__name"></input>
-                  <input type="text" name="description" value="Исследователь океана"
-                     class="popup__input popup__description"></input>
-                  <button class=" button button__submit" type="submit">Сохранить</button>
+                  <input type="text" name="autor" value="Жак-Ив Кусто" required class="popup__input popup__input_type_name">
+                  <input type="text" name="job-autor" value="Исследователь океана" required
+                     class="popup__input popup__input_type_job">
+                  <button class="button button_submit-popup" type="submit">Сохранить</button>
                </form>
             </div>
          </section>

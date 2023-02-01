@@ -1,4 +1,4 @@
-.button__edit {
+.button_edit-profile {
    margin-top: 16px;
    margin-left: 16px;
    align-self: flex-start;
@@ -8,12 +8,12 @@
    cursor: pointer;
 }
 
-.button__edit:hover {
+.button_edit-profile:hover {
    opacity: .6;
 }
 
 @media screen and (max-width: 760px) {
-   .button__edit {
+   .button_edit-profile {
       width: 18px;
       height: 18px;
       margin: 0;

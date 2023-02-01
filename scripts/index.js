@@ -1,23 +1,22 @@
-const editButtonPopup = document.querySelector('.button__edit_type_active');
+const editButtonProfile = document.querySelector('.button_edit-profile');
 const popup = document.querySelector('.popup');
-const closeButtonPopup = popup.querySelector('.button__close');
+const closeButtonPopup = popup.querySelector('.button_popup-close');
 let formElement = document.querySelector('.popup__form');
-let nameInput = document.querySelector('.popup__name'); // Воспользуйтесь инструментом .querySelector()
-let jobInput = document.querySelector('.popup__description'); // Воспользуйтесь инструментом .querySelector()
-let nameInput11 = document.querySelector('.profile__name'); // Воспользуйтесь инструментом .querySelector()
-let jobInput11 = document.querySelector('.input__description');
+let nameInput = document.querySelector('.popup__input_type_name'); 
+let jobInput = document.querySelector('.popup__input_type_job'); 
+let nameProfile = document.querySelector('.profile__name'); 
+let jobProfile = document.querySelector('.profile__job');
+
 
 const toggleOpenPopup = () => {
    popup.classList.toggle("popup_opened");
-};
+}
 
-const handleEditButtonPopupClick = () => {
+const handleEditButtonProfileClick = () => {
    toggleOpenPopup();
 }
 
 const handleCloseButtonPopupClick = () => {
-   //nameInput.value = nameInput11.textContent;
-  //jobInput.value = nameInput11.textContent;
    toggleOpenPopup();
 }
 
@@ -27,36 +26,24 @@ const handleOverlayClick = (event) => {
       toggleOpenPopup();
 }
 
-editButtonPopup.addEventListener('click', handleEditButtonPopupClick);
+editButtonProfile.addEventListener('click', handleEditButtonProfileClick);
 closeButtonPopup.addEventListener('click', handleCloseButtonPopupClick);
 popup.addEventListener('click', handleOverlayClick);
-
-
-
-
 
 
 function formSubmitHandler(event) {
    event.preventDefault(); // Эта строчка отменяет стандартную отправку формы.
 
-
-
-   //nameInput.getAttribute('value');
-   //jobInput.getAttribute('value');
+   // nameInput.getAttribute('value');
+   // jobInput.getAttribute('value');
    // Получите значение полей из свойства value
 
-   // Выберите элементы, куда должны быть вставлены значения полей
-   nameInput11.textContent = nameInput.value;
-   jobInput11.textContent = jobInput.value;
-   // Вставьте новые значения с помощью textContent
+   nameProfile.textContent = nameInput.value;
+   jobProfile.textContent = jobInput.value;
 
    handleCloseButtonPopupClick();
 }
 
-
-
-// Прикрепляем обработчик к форме:
-// он будет следить за событием “submit” - «отправка»
 formElement.addEventListener('submit', formSubmitHandler);
 
 
