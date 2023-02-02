@@ -9,12 +9,11 @@
    <title>Mesto</title>
 </head>
 
-<body>
+<body class="root">
    <div class="page">
 
       <header class="header">
          <img src="./images/logo-white.svg" alt="Логотип." class="header__logo">
-         <hr class="header__line">
       </header>
 
 
@@ -27,80 +26,80 @@
                   <h1 class="profile__name">Жак-Ив Кусто</h1>
                   <p class="profile__job">Исследователь океана</p>
                </div>
-               <button type="button" class="button button_edit-profile"></button>
+               <button type="button" class="profile__button-edit"></button>
             </div>
-            <button type="button" class="button button_add"></button>
+            <button type="button" class="profile__button-add"></button>
          </section>
 
          <section class="cards" aria-label="Места">
-            <div class="card">
+            <article class="card">
                <img src="./images/card__image_carachaevsk.jpg" alt="Природа Карачаевска." class="card__image">
                <div class="card__container">
                   <h2 class="card__description">Карачаевск</h2>
-                  <button type="button" class="button button_like"><img src="./images/like_button.png"
+                  <button type="button" class="card__button-like"><img src="./images/like_line.svg"
                         alt="Кнопка нравится."></button>
                </div>
-            </div>
-            <div class="card">
+            </article>
+            <article class="card">
                <img src="./images/card__image_elbrus.jpg" alt="Горы, Эльбрус." class="card__image">
                <div class="card__container">
                   <h2 class="card__description">Гора Эльбрус</h2>
-                  <button type="button" class="button button_like"><img src="./images/like_button.png"
+                  <button type="button" class="card__button-like"><img src="./images/like_line.svg"
                         alt="Кнопка нравится."></button>
                </div>
-            </div>
-            <div class="card">
+            </article>
+            <article class="card">
                <img src="./images/card__image_dombaj.jpg" alt="Дорога на Домбай." class="card__image">
                <div class="card__container">
                   <h2 class="card__description">Домбай</h2>
-                  <button type="button" class="button button_like"><img src="./images/like_button.png"
+                  <button type="button" class="card__button-like"><img src="./images/like_line.svg"
                         alt="Кнопка нравится."></button>
                </div>
-            </div>
-            <div class="card">
+            </article>
+            <article class="card">
                <img src="./images/card__image_kamchatka.jpg" alt="Вид с океана на горы Камчатки." class="card__image">
                <div class="card__container">
                   <h2 class="card__description">Петропавловск-Камчатский</h2>
-                  <button type="button" class="button button_like"><img src="./images/like_button.png"
+                  <button type="button" class="card__button-like"><img src="./images/like_line.svg"
                         alt="Кнопка нравится."></button>
                </div>
-            </div>
-            <div class="card">
+            </article>
+            <article class="card">
                <img src="./images/card__image_baltijsk.jpg" alt="Балтийское море." class="card__image">
                <div class="card__container">
                   <h2 class="card__description">Балтийск</h2>
-                  <button type="button" class="button button_like"><img src="./images/like_button.png"
+                  <button type="button" class="card__button-like"><img src="./images/like_line.svg"
                         alt="Кнопка нравится."></button>
                </div>
-            </div>
-            <div class="card">
+            </article>
+            <article class="card">
                <img src="./images/card__image_karelia.jpg" alt="Леса Карелии." class="card__image">
                <div class="card__container">
                   <h2 class="card__description">Карелия</h2>
-                  <button type="button" class="button button_like"><img src="./images/like_button.png"
+                  <button type="button" class="card__button-like"><img src="./images/like_line.svg"
                         alt="Кнопка нравится."></button>
                </div>
-            </div>
+            </article>
          </section>
-
-         <section class="popup">
-            <div class="popup__container">
-               <button class="button button_popup-close"></button>
-               <h2 class="popup__title">Редактировать профиль</h2>
-               <form class="popup__form">
-                  <input type="text" name="autor" value="Жак-Ив Кусто" required class="popup__input popup__input_type_name">
-                  <input type="text" name="job-autor" value="Исследователь океана" required
-                     class="popup__input popup__input_type_job">
-                  <button class="button button_submit-popup" type="submit">Сохранить</button>
-               </form>
-            </div>
-         </section>
-
       </main>
 
       <footer class="footer">
          <p class="footer__copyright">&copy; 2023 Mesto Russia</p>
       </footer>
+
+      <section class="popup">
+         <div class="popup__container">
+            <button type="button" class="popup__btn-close"></button>
+            <h2 class="popup__title">Редактировать профиль</h2>
+            <form class="popup__form" method="post" name="popupForm">
+               <input type="text" name="autor" value="Жак-Ив Кусто" required
+                  class="popup__input popup__input_type_name">
+               <input type="text" name="job-autor" value="Исследователь океана" required
+                  class="popup__input popup__input_type_job">
+               <button class="popup__btn-submit" type="submit">Сохранить</button>
+            </form>
+         </div>
+      </section>
 
    </div>
 
