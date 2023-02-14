@@ -31,73 +31,62 @@
             <button type="button" class="profile__button-add"></button>
          </section>
 
-         <section class="cards" aria-label="Места">
-            <article class="card">
-               <img src="./images/card__image_carachaevsk.jpg" alt="Природа Карачаевска." class="card__image">
+         <!-- Контейнер карточек -->
+         <ul class="cards">
+
+         </ul>
+
+         <template id="item">
+            <li class="card">
+               <img src="#" alt="Фотография места." class="card__image">
+               <button type="button" class="card__button-deleted"></button>
                <div class="card__container">
-                  <h2 class="card__description">Карачаевск</h2>
-                  <button type="button" class="card__button-like"><img src="./images/like_line.svg"
-                        alt="Кнопка нравится."></button>
+                  <h2 class="card__description"></h2>
+                  <button type="button" class="card__button-like"></button>
                </div>
-            </article>
-            <article class="card">
-               <img src="./images/card__image_elbrus.jpg" alt="Горы, Эльбрус." class="card__image">
-               <div class="card__container">
-                  <h2 class="card__description">Гора Эльбрус</h2>
-                  <button type="button" class="card__button-like"><img src="./images/like_line.svg"
-                        alt="Кнопка нравится."></button>
-               </div>
-            </article>
-            <article class="card">
-               <img src="./images/card__image_dombaj.jpg" alt="Дорога на Домбай." class="card__image">
-               <div class="card__container">
-                  <h2 class="card__description">Домбай</h2>
-                  <button type="button" class="card__button-like"><img src="./images/like_line.svg"
-                        alt="Кнопка нравится."></button>
-               </div>
-            </article>
-            <article class="card">
-               <img src="./images/card__image_kamchatka.jpg" alt="Вид с океана на горы Камчатки." class="card__image">
-               <div class="card__container">
-                  <h2 class="card__description">Петропавловск-Камчатский</h2>
-                  <button type="button" class="card__button-like"><img src="./images/like_line.svg"
-                        alt="Кнопка нравится."></button>
-               </div>
-            </article>
-            <article class="card">
-               <img src="./images/card__image_baltijsk.jpg" alt="Балтийское море." class="card__image">
-               <div class="card__container">
-                  <h2 class="card__description">Балтийск</h2>
-                  <button type="button" class="card__button-like"><img src="./images/like_line.svg"
-                        alt="Кнопка нравится."></button>
-               </div>
-            </article>
-            <article class="card">
-               <img src="./images/card__image_karelia.jpg" alt="Леса Карелии." class="card__image">
-               <div class="card__container">
-                  <h2 class="card__description">Карелия</h2>
-                  <button type="button" class="card__button-like"><img src="./images/like_line.svg"
-                        alt="Кнопка нравится."></button>
-               </div>
-            </article>
-         </section>
+            </li>
+         </template>
+
       </main>
 
       <footer class="footer">
          <p class="footer__copyright">&copy; 2023 Mesto Russia</p>
       </footer>
 
-      <section class="popup">
-         <div class="popup__container">
-            <button type="button" class="popup__btn-close"></button>
-            <h2 class="popup__title">Редактировать профиль</h2>
-            <form class="popup__form" method="post" name="popupForm">
-               <input type="text" name="autor" value="Жак-Ив Кусто" required
-                  class="popup__input popup__input_type_name">
-               <input type="text" name="job-autor" value="Исследователь океана" required
-                  class="popup__input popup__input_type_job">
-               <button class="popup__btn-submit" type="submit">Сохранить</button>
+      <!-- Модальные окна -->
+      <section class="popup-edit">
+         <div class="popup-edit__container">
+            <button type="button" class="popup-edit__btn-close"></button>
+            <h2 class="popup-edit__title">Редактировать профиль</h2>
+            <form class="popup-edit__form" method="post" name="popupEditForm">
+               <input type="text" name="autor" value="Жак-Ив Кусто" required placeholder="Имя автора"
+                  class="popup-edit__input popup-edit__input_type_name">
+               <input type="text" name="job-autor" value="Исследователь океана" required placeholder="Вид деятельности"
+                  class="popup-edit__input popup-edit__input_type_job">
+               <button class="popup-edit__btn-submit" type="submit">Сохранить</button>
             </form>
+         </div>
+      </section>
+
+      <section class="popup-add">
+         <div class="popup-add__container">
+            <button type="button" class="popup-add__btn-close"></button>
+            <h2 class="popup-add__title">Новое место</h2>
+            <form class="popup-add__form" method="post" name="popupAddForm">
+               <input type="text" name="namePlace" placeholder="Название" required
+                  class="popup-add__input popup-add__input_type_place">
+               <input type="text" name="linkPlace" placeholder="Ссылка на картинку" required
+                  class="popup-add__input popup-add__input_type_link">
+               <button class="popup-add__btn-submit" type="submit">Сохранить</button>
+            </form>
+         </div>
+      </section>
+
+      <section class="popup-view" aria-label="Место">
+         <div class="popup-view__image-container">
+            <img src="#" alt="Увеличенное фото места." class="popup-view__image">
+            <p class="popup-view__caption"></p>
+            <button type="button" class="popup-view__btn-close"></button>
          </div>
       </section>
 
