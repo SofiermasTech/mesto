@@ -38,7 +38,7 @@
 
          <template id="item">
             <li class="card">
-               <img src="#" alt="Фотография места." class="card__image">
+               <img src="#" alt="" class="card__image">
                <button type="button" class="card__button-deleted"></button>
                <div class="card__container">
                   <h2 class="card__description"></h2>
@@ -54,39 +54,39 @@
       </footer>
 
       <!-- Модальные окна -->
-      <section class="popup-edit">
+      <section class="popup popup-edit">
          <div class="popup-edit__container">
-            <button type="button" class="popup-edit__btn-close"></button>
+            <button type="button" class="popup__close popup-edit__btn-close"></button>
             <h2 class="popup-edit__title">Редактировать профиль</h2>
             <form class="popup-edit__form" method="post" name="popupEditForm">
                <input type="text" name="autor" value="Жак-Ив Кусто" required placeholder="Имя автора"
-                  class="popup-edit__input popup-edit__input_type_name">
+                  class="popup__input  popup__input_type_name">
                <input type="text" name="job-autor" value="Исследователь океана" required placeholder="Вид деятельности"
-                  class="popup-edit__input popup-edit__input_type_job">
-               <button class="popup-edit__btn-submit" type="submit">Сохранить</button>
+                  class="popup__input popup__input_type_job">
+               <button class="popup__submit popup-edit__btn-submit" type="submit">Сохранить</button>
             </form>
          </div>
       </section>
 
-      <section class="popup-add">
+      <section class="popup popup-add">
          <div class="popup-add__container">
-            <button type="button" class="popup-add__btn-close"></button>
+            <button type="button" class="popup__close popup-add__btn-close"></button>
             <h2 class="popup-add__title">Новое место</h2>
             <form class="popup-add__form" method="post" name="popupAddForm">
                <input type="text" name="namePlace" placeholder="Название" required
-                  class="popup-add__input popup-add__input_type_place">
+                  class="popup__input popup__input_type_place">
                <input type="text" name="linkPlace" placeholder="Ссылка на картинку" required
-                  class="popup-add__input popup-add__input_type_link">
-               <button class="popup-add__btn-submit" type="submit">Сохранить</button>
+                  class="popup__input popup__input_type_link">
+               <button class="popup__submit popup-add__btn-submit" type="submit">Сохранить</button>
             </form>
          </div>
       </section>
 
-      <section class="popup-view" aria-label="Место">
+      <section class="popup popup-view" aria-label="Место">
          <div class="popup-view__image-container">
-            <img src="#" alt="Увеличенное фото места." class="popup-view__image">
+            <img src="#" alt="" class="popup-view__image">
             <p class="popup-view__caption"></p>
-            <button type="button" class="popup-view__btn-close"></button>
+            <button type="button" class="popup__close popup-view__btn-close"></button>
          </div>
       </section>
 
