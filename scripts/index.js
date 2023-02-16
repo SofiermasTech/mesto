@@ -17,23 +17,28 @@ const formElement = document.querySelector('.popup-edit__form');
 //Открытие/закрытие popup
 const openPopup = function (popup) {
    popup.classList.add('popup_opened');
-   nameInput.value = nameProfile.textContent;
-   jobInput.value = jobProfile.textContent;
+   
 }
 
 function closePopup(popup) {
    popup.classList.remove('popup_opened');
 }
 
+//загрузка значений формы
+function loadValueForm() {
+   nameInput.value = nameProfile.textContent;
+   jobInput.value = jobProfile.textContent;
+ }
+
 //Первый
-editButtonProfile.addEventListener('click', () => openPopup(popupEdit));
-//closeButtonPopupEdit.addEventListener('click', () => closePopup(popupEdit));
+editButtonProfile.addEventListener('click', () => {openPopup(popupEdit), loadValueForm()});
+
 //Второй
 addButtonProfile.addEventListener('click', () => openPopup(popupAdd));
-//closeButtonPopupAdd.addEventListener('click', () => closePopup(popupAdd));
+
 
 //Редактирование профиля
-function formSubmitHandler(event) {
+function handleProfileFormSubmit(event) {
    event.preventDefault(); // Эта строчка отменяет стандартную отправку формы.
 
    nameProfile.textContent = nameInput.value;
@@ -42,7 +47,7 @@ function formSubmitHandler(event) {
    closePopup(popupEdit);
 }
 
-formElement.addEventListener('submit', formSubmitHandler);
+formElement.addEventListener('submit', handleProfileFormSubmit);
 
 //Добавление карточки
 const addCard = function (place, link) {
