@@ -1,7 +1,7 @@
-// включение валидации вызовом enableValidation
+// включение валидации вызовом validationConfig
 // все настройки передаются при вызове
 
-const enableValidation = {
+const validationConfig = {
    formSelector: '.popup__form',
    inputSelector: '.popup__input',
    submitButtonSelector: '.popup__submit',
@@ -11,39 +11,39 @@ const enableValidation = {
 };
 
 // Показ, скрытие ошибок валидации
-const showInputError = function (formElement, inputElement, errorMessage) {
+const showInputError = function (formElement, inputElement, errorMessage, config) {
    const errorElement = formElement.querySelector(`.${inputElement.id}-error`)
-   inputElement.classList.add(enableValidation.inputErrorClass);
+   inputElement.classList.add(config.inputErrorClass);
    errorElement.textContent = errorMessage;
-   errorElement.classList.add(enableValidation.errorClass);
+   errorElement.classList.add(config.errorClass);
 };
 
 
-const hideInputError = function (formElement, inputElement) {
+const hideInputError = function (formElement, inputElement, config) {
    const errorElement = formElement.querySelector(`.${inputElement.id}-error`)
-   inputElement.classList.remove(enableValidation.inputErrorClass);
-   errorElement.classList.remove(enableValidation.errorClass);
+   inputElement.classList.remove(config.inputErrorClass);
+   errorElement.classList.remove(config.errorClass);
    errorElement.textContent = '';
 };
 
 // Проверка форм
-const checkInputValidity = function (formElement, inputElement) {
+const checkInputValidity = function (formElement, inputElement, config) {
    if (inputElement.validity.valid === false) {
-      showInputError(formElement, inputElement, inputElement.validationMessage);
+      showInputError(formElement, inputElement, inputElement.validationMessage, config);
    } else {
-      hideInputError(formElement, inputElement);
+      hideInputError(formElement, inputElement, config);
    }
 };
 
 
-const setEventListeners = function (formElement) {
-   const inputList = Array.from(formElement.querySelectorAll(enableValidation.inputSelector));
-   const buttontElement = formElement.querySelector(enableValidation.submitButtonSelector);
-   toggleButtonState(inputList, buttontElement);
+const setEventListeners = function (formElement, config) {
+   const inputList = Array.from(formElement.querySelectorAll(config.inputSelector));
+   const buttonElement = formElement.querySelector(config.submitButtonSelector);
+   toggleButtonState(inputList, buttonElement, config);
    inputList.forEach((inputElement) => {
       inputElement.addEventListener('input', function () {
-         checkInputValidity(formElement, inputElement);
-         toggleButtonState(inputList, buttontElement);
+         checkInputValidity(formElement, inputElement, config);
+         toggleButtonState(inputList, buttonElement, config);
       });
    });
 }
@@ -56,24 +56,27 @@ const hasInvalidInput = function (inputList) {
 }
 
 
-const enableValidationCheck = function () {
-   const formList = Array.from(document.querySelectorAll(enableValidation.formSelector));
+const enableValidation = function (config) {
+   const formList = Array.from(document.querySelectorAll(config.formSelector));
    formList.forEach((formElement) => {
       formElement.addEventListener('submit', function (evt) {
          evt.preventDefault();
       });
-      setEventListeners(formElement);
+      setEventListeners(formElement, config);
    });
+
 }
 
 
-const toggleButtonState = function (inputList, buttontElement) {
+const toggleButtonState = function (inputList, buttonElement, config) {
    if (hasInvalidInput(inputList)) {
-      buttontElement.classList.add(enableValidation.inactiveButtonClass);
+      buttonElement.classList.add(config.inactiveButtonClass);
+      buttonElement.setAttribute('disabled', true);
    } else {
-      buttontElement.classList.remove(enableValidation.inactiveButtonClass);
+      buttonElement.classList.remove(config.inactiveButtonClass);
+      buttonElement.removeAttribute('disabled');
    }
 }
 
 
-enableValidationCheck(enableValidation);
+enableValidation(validationConfig);
