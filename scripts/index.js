@@ -12,18 +12,48 @@ const popupViewImage = popupImageView.querySelector('.popup-view__image');
 const addButtonProfile = document.querySelector('.profile__button-add');
 const popupAdd = document.querySelector('.popup-add');
 const formElement = document.querySelector('.popup-edit__form');
+const closeButtons = document.querySelectorAll('.popup__close');
 
 
 //Открытие/закрытие popup
 const openPopup = function (popup) {
    popup.classList.add('popup_opened');
-   
+   document.addEventListener('keydown', closePopupEsc)
 }
 
 function closePopup(popup) {
    popup.classList.remove('popup_opened');
+   document.removeEventListener('keydown', closePopupEsc)
 }
 
+// ESC
+const closePopupEsc = function (evt) {
+   if (evt.key === 'Escape') {
+     const popupVisible = document.querySelector('.popup_opened')
+     closePopup(popupVisible);
+   }
+}
+
+//Закрытие по overlay 
+popupEdit.addEventListener("click", (evt) => {
+   if (evt.currentTarget === evt.target) {
+     closePopup(popupEdit)
+   }
+ })
+
+ popupAdd.addEventListener("click", (evt) => {
+   if (evt.currentTarget === evt.target) {
+     closePopup(popupAdd)
+   }
+ }) 
+
+ popupImageView.addEventListener("click", (evt) => {
+   if (evt.currentTarget === evt.target) {
+     closePopup(popupImageView)
+   }
+ }) 
+
+ 
 //загрузка значений формы
 function loadValueForm() {
    nameInput.value = nameProfile.textContent;
@@ -82,8 +112,7 @@ const addCard = function (place, link) {
    }
 
    cardImagePlace.addEventListener('click', openPopupView);
-   //closeButtonPopupView.addEventListener('click', () => closePopup(popupImageView));
-
+   
    return cloneCardTemplate;
 }
 
@@ -129,6 +158,7 @@ const saveCard = function (evt) {
    evt.target.reset();
    closePopup(popupAdd);
 }
+
 //Начальные карточки
 const addStartCard = function () {
    placeList.forEach(function (card) {
@@ -142,12 +172,8 @@ popupAddForm.addEventListener('submit', saveCard);
 
 
 //крестики
-const closeButtons = document.querySelectorAll('.popup__close');
-
 closeButtons.forEach((button) => {
    const popup = button.closest('.popup');
    button.addEventListener('click', () => closePopup(popup));
 });
-
-
 

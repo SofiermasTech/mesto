@@ -8,11 +8,18 @@
    font-size: 14px;
    line-height: 17px;
    padding: 0;
+  
 }
 
+/*
 .popup__input:first-child {
-   margin-bottom: 25px;
+   padding-bottom: 25px;
 }
+
+.popup__input:valid {
+   border-bottom: 1px solid #15e95f;
+} 
+*/
 
 @media screen and (max-width: 550px) {
    .popup__input {
