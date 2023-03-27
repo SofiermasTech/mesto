@@ -3,6 +3,7 @@ export class FormValidator {
    constructor(config, formElement) {
       this._config = config;
       this._formElement = formElement;
+      this._inputList = Array.from(this._formElement.querySelectorAll(this._config.inputSelector));
       //submit кнопка в форме
       this._buttonElement = this._formElement.querySelector(this._config.submitButtonSelector);
    }
@@ -35,36 +36,31 @@ export class FormValidator {
 
    //метод проверки всех input
    _setEventListeners() {
-      const inputList = Array.from(this._formElement.querySelectorAll(this._config.inputSelector));
+      this.toggleButtonState();
 
-      this._toggleButtonState();
-
-      inputList.forEach((inputElement) => {
+      this._inputList.forEach((inputElement) => {
          inputElement.addEventListener('input', () => {
             this._checkInputValidity(inputElement);
-            this._toggleButtonState();
+            this.toggleButtonState();
          });
       });
    }
 
 
    _hasInvalidInput() {
-      return Array.from(this._formElement.querySelectorAll(this._config.inputSelector)).some((inputElement) => {
+      return this._inputList.some((inputElement) => {
          return !inputElement.validity.valid;
       });
    }
 
 
    enableValidation() {
-      const formList = Array.from(document.querySelectorAll(this._config.formSelector));
-      formList.forEach((formElement) => {
-         this._setEventListeners(formElement);
-      });
+      this._setEventListeners();
    }
 
 
    //метод активации submit валидации
-   _toggleButtonState() {
+   toggleButtonState() {
       if (this._hasInvalidInput()) {
 
          this._buttonElement.setAttribute('disabled', 'true');

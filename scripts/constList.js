@@ -11,26 +11,26 @@ export const validationConfig = {
 export const placeList = [
    {
       link: 'https://pictures.s3.yandex.net/frontend-developer/cards-compressed/arkhyz.jpg',
-      place: 'Карачаевск'
+      name: 'Карачаевск'
    },
    {
       link: 'https://pictures.s3.yandex.net/frontend-developer/cards-compressed/chelyabinsk-oblast.jpg',
-      place: 'Гора Эльбрус'
+      name: 'Гора Эльбрус'
    },
    {
       link: 'https://pictures.s3.yandex.net/frontend-developer/cards-compressed/ivanovo.jpg',
-      place: 'Домбай'
+      name: 'Домбай'
    },
    {
       link: 'https://pictures.s3.yandex.net/frontend-developer/cards-compressed/kamchatka.jpg',
-      place: 'Петропавловск-Камчатский'
+      name: 'Петропавловск-Камчатский'
    },
    {
       link: 'https://pictures.s3.yandex.net/frontend-developer/cards-compressed/kholmogorsky-rayon.jpg',
-      place: 'Балтийск'
+      name: 'Балтийск'
    },
    {
       link: 'https://pictures.s3.yandex.net/frontend-developer/cards-compressed/baikal.jpg',
-      place: 'Карелия'
+      name: 'Карелия'
    },
 ];
