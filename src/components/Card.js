@@ -1,13 +1,17 @@
 
-import { popupViewCaption, popupViewImage, openPopup, popupImageView } from './index.js';
+//import { popupViewCaption, popupViewImage, openPopup, popupImageView } from '../pages/index.js';
 
-export class Card {
-   constructor(link, name, templateCard) {
-      this._link = link;
-      this._name = name;
+export default class Card {
+   constructor(data, handleCardClick, templateCard ) {
+      this._link = data.link;
+      this._name = data.name;
       this._templateCard = templateCard;
-   }
+      this._handleCardClick = handleCardClick;
+      
 
+      //this._cardTemplate = document.querySelector(this._templateCard).content.querySelector('.card').cloneNode(true);
+      
+   }
 
    generateCard() {
       this._cardTemplate = document.querySelector(this._templateCard).content
@@ -27,11 +31,10 @@ export class Card {
       this._setEventListeners();
       return this._cardTemplate;
    }
-  
+
 
    //метод лайка
    _handleLikeCard() {
-      //const buttonLike = this._element.querySelector('.card__button-like');
       this._buttonLike.classList.toggle('card__button-like_active');
    }
 
@@ -41,14 +44,11 @@ export class Card {
       this._cardTemplate = null;
    }
 
+/*
    //метод увеличения изображения
    _openPopupView() {
-      popupViewCaption.textContent = this._name;
-      popupViewImage.src = this._link;
-      popupViewImage.alt = this._name;
-
-      openPopup(popupImageView);
-   }
+      this._handleCardClick(this._name, this._link);
+   } */
 
    //слушатели лайка, удаления, увеличеения
    _setEventListeners() {
@@ -62,11 +62,11 @@ export class Card {
       })
 
       this._cardImage.addEventListener('click', () => {
-         this._openPopupView();
+         this._handleCardClick(this._link, this._name);
       })
    }
 
-  
+
 }
 
 //console.log(this._templateCard);
