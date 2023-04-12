@@ -3,7 +3,6 @@ export default class Section {
       this._items = items;
       this._renderer = renderer;
       this._container = document.querySelector(containerSelector);
-      
    }
 
    // Метод отрисовки всех элементов
@@ -16,5 +15,4 @@ export default class Section {
    addItem(element) {
       this._container.prepend(element);
    }
-
 }

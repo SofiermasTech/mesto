@@ -15,8 +15,6 @@ export default class UserInfo {
    setUserInfo({ author, jobAuthor }) {
       this._author.textContent = author;
       this._jobAuthor.textContent = jobAuthor;
-
    }
-
 }
 

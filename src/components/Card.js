@@ -6,11 +6,7 @@ export default class Card {
       this._link = data.link;
       this._name = data.name;
       this._templateCard = templateCard;
-      this._handleCardClick = handleCardClick;
-      
-
-      //this._cardTemplate = document.querySelector(this._templateCard).content.querySelector('.card').cloneNode(true);
-      
+      this._handleCardClick = handleCardClick;    
    }
 
    generateCard() {
@@ -21,9 +17,7 @@ export default class Card {
       this._buttonDeleted = this._cardTemplate.querySelector('.card__button-deleted');
       this._cardDescription = this._cardTemplate.querySelector('.card__description');
       this._cardImage = this._cardTemplate.querySelector('.card__image');
-      //this._element = this._getTemplate();
-      
-
+     
       this._cardImage.src = this._link;
       this._cardDescription.textContent = this._name;
       this._cardImage.alt = this._name;
@@ -44,11 +38,6 @@ export default class Card {
       this._cardTemplate = null;
    }
 
-/*
-   //метод увеличения изображения
-   _openPopupView() {
-      this._handleCardClick(this._name, this._link);
-   } */
 
    //слушатели лайка, удаления, увеличеения
    _setEventListeners() {
@@ -69,4 +58,4 @@ export default class Card {
 
 }
 
-//console.log(this._templateCard);
+//console.log();

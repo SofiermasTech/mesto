@@ -1,5 +1,5 @@
 
-export class FormValidator {
+export default class FormValidator {
    constructor(config, formElement) {
       this._config = config;
       this._formElement = formElement;
@@ -42,6 +42,7 @@ export class FormValidator {
          inputElement.addEventListener('input', () => {
             this._checkInputValidity(inputElement);
             this.toggleButtonState();
+
          });
       });
    }
@@ -58,6 +59,14 @@ export class FormValidator {
       this._setEventListeners();
    }
 
+
+   resetValidation() {
+      this.toggleButtonState();
+
+      this._inputList.forEach((inputElement) => {
+         this._hideInputError(inputElement);
+      });
+   }
 
    //метод активации submit валидации
    toggleButtonState() {
