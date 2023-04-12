@@ -18,12 +18,12 @@ import PopupWithForm from '../components/PopupWithForm.js';
 import UserInfo from '../components/UserInfo.js';
 import './index.css';
 
-
+/*
 // Заносим данные в форму попапа редактирования профиля
 function loadValueEditProfileForm({ author, jobAuthor }) {
    nameInput.value = author;
    jobInput.value = jobAuthor;
-};
+}; */
 
 // Объявление функции для изображения popup
 const handleCardClick = function (link, name) {
@@ -58,19 +58,20 @@ const popupEditProfile = new PopupWithForm({
 
       popupEditProfile.close();
    }
-});
+}); 
 popupEditProfile.setEventListeners();
 
 
 // Слушатель на иконку редактирования профиля
 popupProfileOpenButton.addEventListener('click', () => {
-   const info = userInfo.getUserInfo();
    profileValidation.resetValidation();
-   loadValueEditProfileForm({
+  /* const info = userInfo.getUserInfo();
+      loadValueEditProfileForm({
       author: info.author,
       jobAuthor: info.jobAuthor
-   });
-
+   }); */
+   nameInput.setAttribute('value', userInfo.getUserInfo().author);
+   jobInput.setAttribute('value', userInfo.getUserInfo().jobAuthor);
    popupEditProfile.open();
 });
 
@@ -84,7 +85,6 @@ const saveCard = new PopupWithForm({
    }
 });
 saveCard.setEventListeners();
-
 
 
 // add
@@ -112,3 +112,5 @@ const profileValidation = new FormValidator(validationConfig, popupEdit);
 const newCardValidation = new FormValidator(validationConfig, popupAdd);
 profileValidation.enableValidation();
 newCardValidation.enableValidation();
+
+

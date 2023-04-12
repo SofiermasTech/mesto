@@ -5,7 +5,7 @@ export default class UserInfo {
    }
 
    getUserInfo() {
-
+      this._userInfo = {};
       return {
          author: this._author.textContent,
          jobAuthor: this._jobAuthor.textContent
@@ -16,5 +16,6 @@ export default class UserInfo {
       this._author.textContent = author;
       this._jobAuthor.textContent = jobAuthor;
    }
+
 }
 

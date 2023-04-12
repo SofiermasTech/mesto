@@ -4,8 +4,8 @@ export default class FormValidator {
       this._config = config;
       this._formElement = formElement;
       this._inputList = Array.from(this._formElement.querySelectorAll(this._config.inputSelector));
-      //submit кнопка в форме
       this._buttonElement = this._formElement.querySelector(this._config.submitButtonSelector);
+      //console.log(this._inputList);
    }
 
    //добавление ошибки
@@ -32,6 +32,7 @@ export default class FormValidator {
       } else {
          this._hideInputError(inputElement);
       }
+      
    };
 
    //метод проверки всех input
