@@ -1,5 +1,5 @@
-import Card from '../components/Card.js';
-import FormValidator from '../components/FormValidator.js';
+import { Card } from '../components/Card.js';
+import { FormValidator } from '../components/FormValidator.js';
 import {
    validationConfig,
    placeList,
@@ -58,21 +58,22 @@ const popupEditProfile = new PopupWithForm({
 
       popupEditProfile.close();
    }
-}); 
+});
 popupEditProfile.setEventListeners();
 
 
 // Слушатель на иконку редактирования профиля
 popupProfileOpenButton.addEventListener('click', () => {
+   popupEditProfile.open();
    profileValidation.resetValidation();
-  /* const info = userInfo.getUserInfo();
-      loadValueEditProfileForm({
-      author: info.author,
-      jobAuthor: info.jobAuthor
-   }); */
+   /* const info = userInfo.getUserInfo();
+       loadValueEditProfileForm({
+       author: info.author,
+       jobAuthor: info.jobAuthor
+    }); */
    nameInput.setAttribute('value', userInfo.getUserInfo().author);
    jobInput.setAttribute('value', userInfo.getUserInfo().jobAuthor);
-   popupEditProfile.open();
+
 });
 
 
@@ -99,8 +100,8 @@ buttonOpenPopupAdd.addEventListener('click', () => {
 const addStartCard = new Section({
    items: placeList,
    renderer: (cardData) => {
-      const card = new Card(cardData, handleCardClick, '#item',);
-      addStartCard.addItem(card.generateCard());
+      //const card = new Card(cardData, handleCardClick, '#item',);
+      addStartCard.addItem(createCard(cardData));
    },
 }, '.cards');
 

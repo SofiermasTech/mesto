@@ -1,7 +1,7 @@
 
 //import { popupViewCaption, popupViewImage, openPopup, popupImageView } from '../pages/index.js';
 
-export default class Card {
+export class Card {
    constructor(data, handleCardClick, templateCard ) {
       this._link = data.link;
       this._name = data.name;
