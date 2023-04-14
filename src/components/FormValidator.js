@@ -31,7 +31,7 @@ export class FormValidator {
       } else {
          this._hideInputError(inputElement);
       }
-      
+
    };
 
    //метод проверки всех input
@@ -61,8 +61,6 @@ export class FormValidator {
 
 
    resetValidation() {
-      //this.toggleButtonState();
-
       this._inputList.forEach((inputElement) => {
          this._hideInputError(inputElement);
       });

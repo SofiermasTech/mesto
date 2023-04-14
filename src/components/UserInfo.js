@@ -5,7 +5,6 @@ export default class UserInfo {
    }
 
    getUserInfo() {
-      this._userInfo = {};
       return {
          author: this._author.textContent,
          jobAuthor: this._jobAuthor.textContent

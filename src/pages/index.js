@@ -9,8 +9,6 @@ import {
    jobInput,
    buttonOpenPopupAdd,
    popupAdd,
-   nameCardPlace,
-   linkCardImage
 } from '../utils/constants.js';
 import Section from '../components/Section.js';
 import PopupWithImage from '../components/PopupWithImage.js';
@@ -18,25 +16,19 @@ import PopupWithForm from '../components/PopupWithForm.js';
 import UserInfo from '../components/UserInfo.js';
 import './index.css';
 
-/*
-// Заносим данные в форму попапа редактирования профиля
-function loadValueEditProfileForm({ author, jobAuthor }) {
-   nameInput.value = author;
-   jobInput.value = jobAuthor;
-}; */
 
-// Объявление функции для изображения popup
+//функция для изображения popup
 const handleCardClick = function (link, name) {
    popupViewImage.open(link, name);
 }
 
 //создание карточки
 const createCard = (cardData) => {
-   const renderCard = new Card(cardData, handleCardClick, '#item');
-   return renderCard.generateCard();
+   const card = new Card(cardData, handleCardClick, '#item');
+   return card.generateCard();
 }
 
-// Объявление popup всплывающего изображения
+//popup всплывающего изображения
 const popupViewImage = new PopupWithImage('.popup-view');
 popupViewImage.setEventListeners();
 
@@ -46,7 +38,7 @@ const userInfo = new UserInfo({
    jobAuthor: '.profile__job'
 });
 
-// Объявление popup редактирования профиля
+//popup редактирования профиля
 const popupEditProfile = new PopupWithForm({
    popupSelector: '.popup-edit',
 
@@ -64,24 +56,19 @@ popupEditProfile.setEventListeners();
 
 // Слушатель на иконку редактирования профиля
 popupProfileOpenButton.addEventListener('click', () => {
-   popupEditProfile.open();
    profileValidation.resetValidation();
-   /* const info = userInfo.getUserInfo();
-       loadValueEditProfileForm({
-       author: info.author,
-       jobAuthor: info.jobAuthor
-    }); */
-   nameInput.setAttribute('value', userInfo.getUserInfo().author);
-   jobInput.setAttribute('value', userInfo.getUserInfo().jobAuthor);
+   popupEditProfile.open();
 
+   const info = userInfo.getUserInfo();
+   nameInput.value = info.author;
+   jobInput.value = info.jobAuthor;
 });
 
 
 const saveCard = new PopupWithForm({
    popupSelector: '.popup-add',
-   handleFormSubmit: () => {
-      addStartCard.addItem(createCard({ link: linkCardImage.value, name: nameCardPlace.value },
-         handleCardClick, '#item'));
+   handleFormSubmit: (formValues) => {
+      addStartCard.addItem(createCard({ link: formValues.linkPlace, name: formValues.namePlace }));
       saveCard.close();
    }
 });
@@ -100,7 +87,6 @@ buttonOpenPopupAdd.addEventListener('click', () => {
 const addStartCard = new Section({
    items: placeList,
    renderer: (cardData) => {
-      //const card = new Card(cardData, handleCardClick, '#item',);
       addStartCard.addItem(createCard(cardData));
    },
 }, '.cards');

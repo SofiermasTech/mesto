@@ -6,8 +6,8 @@ const popupImageView = document.querySelector('.popup-view');
 const popupViewCaption = popupImageView.querySelector('.popup-view__caption');
 const buttonOpenPopupAdd = document.querySelector('.profile__button-add');
 const popupAdd = document.querySelector('.popup-add');
-const nameCardPlace = popupAdd.querySelector('.popup__input_type_place');
-const linkCardImage = popupAdd.querySelector('.popup__input_type_link');
+//const nameCardPlace = popupAdd.querySelector('.popup__input_type_place');
+//const linkCardImage = popupAdd.querySelector('.popup__input_type_link');
 
 
 
@@ -51,5 +51,5 @@ export const placeList = [
 
 export {
    popupProfileOpenButton, popupEdit, nameInput, jobInput, popupImageView, popupViewCaption, buttonOpenPopupAdd,
-   popupAdd, nameCardPlace, linkCardImage
+   popupAdd,
 }

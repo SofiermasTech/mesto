@@ -1,6 +1,3 @@
-
-//import { popupViewCaption, popupViewImage, openPopup, popupImageView } from '../pages/index.js';
-
 export class Card {
    constructor(data, handleCardClick, templateCard ) {
       this._link = data.link;
@@ -26,7 +23,6 @@ export class Card {
       return this._cardTemplate;
    }
 
-
    //метод лайка
    _handleLikeCard() {
       this._buttonLike.classList.toggle('card__button-like_active');
@@ -37,7 +33,6 @@ export class Card {
       this._cardTemplate.remove();
       this._cardTemplate = null;
    }
-
 
    //слушатели лайка, удаления, увеличеения
    _setEventListeners() {
@@ -54,8 +49,4 @@ export class Card {
          this._handleCardClick(this._link, this._name);
       })
    }
-
-
 }
-
-//console.log();
