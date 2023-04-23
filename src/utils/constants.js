@@ -8,7 +8,13 @@ const buttonOpenPopupAdd = document.querySelector('.profile__button-add');
 const popupAdd = document.querySelector('.popup-add');
 //const nameCardPlace = popupAdd.querySelector('.popup__input_type_place');
 //const linkCardImage = popupAdd.querySelector('.popup__input_type_link');
-
+// попап редактирования аватара пользователя
+export const popupAvatar = document.querySelector('.popup-avatar');
+// Форма редактирования аватара пользователя
+export const formAvatar = popupAvatar.querySelector('.popup__form');
+// кнопка редактирования аватара пользователя
+export const buttonEditAvatar = document.querySelector('.profile__button-avatar');
+export const avatar = document.querySelector('.profile__avatar');
 
 
 
