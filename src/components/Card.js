@@ -71,7 +71,7 @@ export class Card {
    }
 
    _setEventListeners() {
-     
+
       this._buttonLike.addEventListener('click', () => {
          if (this._buttonLike.classList.contains('card__button-like_active')) {
             this._handleDeleteLike(this._cardId);

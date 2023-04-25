@@ -17,7 +17,7 @@ export default class Api {
    /* Запросы на сервер для карточек */
 
    //получение 
-    getInitialCards() {
+   getInitialCards() {
       return fetch(`${this._url}/cards`, {
          headers: this._headers
       })
@@ -29,7 +29,7 @@ export default class Api {
       return fetch(`${this._url}/cards`, {
          method: 'POST',
          headers: this._headers,
-         body: JSON.stringify({name, link})
+         body: JSON.stringify({ name, link })
       })
          .then(res => this._parseResponse(res));
    }
@@ -62,7 +62,7 @@ export default class Api {
    }
 
 
-/* Запросы на сервер для пользователя */
+   /* Запросы на сервер для пользователя */
 
    //информация о пользователе с сервера
    getUserInfo() {
@@ -85,7 +85,7 @@ export default class Api {
       })
          .then(res => this._parseResponse(res));
    }
- 
+
    //редактирование аватара
    editAvatar(data) {
       return fetch(`${this._url}/users/me/avatar`, {

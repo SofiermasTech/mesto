@@ -62,13 +62,19 @@ const popupAvatarProfile = new PopupWithForm({
    popupSelector: '.popup-avatar',
    handleFormSubmit: (data) => {
       popupAvatarProfile.loading(true);
-      api.editAvatar(data)
-         .then((data) => {
-            avatar.src = data.avatar;
+      api
+         .editAvatar(data)
+         .then(res => {
+            userInfo.setUserInfo(res)
+            //avatar.src = data.avatar;
             popupAvatarProfile.close();
          })
-         .catch((err) => { console.log(err); })
-         .finally(() => { popupAvatarProfile.loading(false); });
+         .catch((err) => {
+            console.log(err);
+         })
+         .finally(() => {
+            popupAvatarProfile.loading(false);
+         });
    }
 });
 
@@ -89,13 +95,18 @@ const popupEditProfile = new PopupWithForm({
 
    handleFormSubmit: (dataForm) => {
       popupEditProfile.loading(true);
-      api.editUserInfo(dataForm)
-         .then((dataForm) => {
-            userInfo.setUserInfo(dataForm);
+      api
+         .editUserInfo(dataForm)
+         .then((userData) => {
+            userInfo.setUserInfo(userData);
             popupEditProfile.close();
          })
-         .catch((err) => { console.log(`Возникла ошибка: ${err}`); })
-         .finally(() => { popupEditProfile.loading(false); });
+         .catch((err) => {
+            console.log(`Возникла ошибка: ${err}`);
+         })
+         .finally(() => {
+            popupEditProfile.loading(false);
+         });
    }
 });
 
@@ -118,32 +129,46 @@ popupProfileOpenButton.addEventListener('click', () => {
 //создание карточки
 const createCard = function (data) {
    const renderCard = new Card(data, '#item', userId, { cardId: data._id, authorId: data.owner._id }, {
-      
+
       //увеличение изображения
       handleViewCard: (name, link) => { popupViewImage.open(name, link) },
-      
+
       //удаление карточки
       handleDeleteClick: (cardId) => {
          popupDeleteCard.open();
-         popupDeleteCard.submitCallback(() => {
-            api.deleteCard(cardId)
-               .then(() => { popupDeleteCard.close(); renderCard.deleteCard(); })
-               .catch((err) => { console.log(`Возникла ошибка: ${err}`); });
+         popupDeleteCard.setSubmitCallback(() => {
+            api
+               .deleteCard(cardId)
+               .then(() => {
+                  popupDeleteCard.close(); renderCard.deleteCard();
+               })
+               .catch((err) => {
+                  console.log(`Возникла ошибка: ${err}`);
+               });
          });
       },
 
       //лайк
-      handleSetLike: (cardId) => { api.setLike(cardId)
-         .then((data) => { renderCard.handleLikeCard(data); })
-         .catch((err) => { console.log(`Возникла ошибка: ${err}`);
-         })
+      handleSetLike: (cardId) => {
+         api
+            .setLike(cardId)
+            .then((data) => {
+               renderCard.handleLikeCard(data);
+            })
+            .catch((err) => {
+               console.log(`Возникла ошибка: ${err}`);
+            })
       },
 
       //удаление лайка
       handleDeleteLike: (cardId) => {
-         api.deleteLike(cardId)
-            .then((data) => { renderCard.handleLikeCard(data); })
-            .catch((err) => { console.log(`Возникла ошибка: ${err}`);
+         api
+            .deleteLike(cardId)
+            .then((data) => {
+               renderCard.handleLikeCard(data);
+            })
+            .catch((err) => {
+               console.log(`Возникла ошибка: ${err}`);
             })
       },
    });
@@ -164,12 +189,17 @@ const saveCard = new PopupWithForm({
    popupSelector: '.popup-add',
    handleFormSubmit: (formValues) => {
       saveCard.loading('Сохранение...');
-      api.addNewCard({ name: formValues.namePlace, link: formValues.linkPlace })
-         .then((formValues) => { addStartCard.addItem(createCard(formValues)); saveCard.close();
+      api
+         .addNewCard({ name: formValues.namePlace, link: formValues.linkPlace })
+         .then((cardData) => {
+            addStartCard.addItem(createCard(cardData));
+            saveCard.close();
          })
-         .catch((err) => { console.log(`Возникла ошибка: ${err}`);
+         .catch((err) => {
+            console.log(`Возникла ошибка: ${err}`);
          })
-         .finally(() => { saveCard.loading(false);
+         .finally(() => {
+            saveCard.loading(false);
          })
    }
 });
