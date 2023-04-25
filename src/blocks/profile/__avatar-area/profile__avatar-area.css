@@ -7,3 +7,9 @@
    position: relative;
 
 }
+
+@media screen and (max-width: 760px) {
+   .profile__avatar-area {
+      margin-right: 0px;
+   }
+}
