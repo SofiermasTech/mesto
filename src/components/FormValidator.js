@@ -4,15 +4,15 @@ export class FormValidator {
       this._formElement = formElement;
       this._inputList = Array.from(this._formElement.querySelectorAll(this._config.inputSelector));
       this._buttonElement = this._formElement.querySelector(this._config.submitButtonSelector);
-      //console.log(this._inputList);
+      // console.log(this._inputList);
    }
 
    //добавление ошибки
    _showInputError(inputElement, errorMessage) {
       const errorElement = this._formElement.querySelector(`.${inputElement.id}-error`);
       inputElement.classList.add(this._config.inputErrorClass);
-      errorElement.textContent = errorMessage;
       errorElement.classList.add(this._config.errorClass);
+      errorElement.textContent = errorMessage;
    };
 
    //удаление ошибки
@@ -31,7 +31,6 @@ export class FormValidator {
       } else {
          this._hideInputError(inputElement);
       }
-
    };
 
    //метод проверки всех input
@@ -42,7 +41,6 @@ export class FormValidator {
          inputElement.addEventListener('input', () => {
             this._checkInputValidity(inputElement);
             this.toggleButtonState();
-
          });
       });
    }
@@ -69,11 +67,9 @@ export class FormValidator {
    //метод активации submit валидации
    toggleButtonState() {
       if (this._hasInvalidInput()) {
-
          this._buttonElement.setAttribute('disabled', 'true');
          this._buttonElement.classList.add(this._config.inactiveButtonClass);
       } else {
-
          this._buttonElement.classList.remove(this._config.inactiveButtonClass);
          this._buttonElement.removeAttribute('disabled');
       }

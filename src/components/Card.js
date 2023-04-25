@@ -1,52 +1,98 @@
 export class Card {
-   constructor(data, handleCardClick, templateCard ) {
-      this._link = data.link;
-      this._name = data.name;
+   constructor(data, templateCard, userId, authorData, actions) {
+
+      this._card = data;
+      this._name = this._card.name;
+      this._link = this._card.link;
+      this._cardOwnerId = this._card.owner._id;
       this._templateCard = templateCard;
-      this._handleCardClick = handleCardClick;    
+
+      this._userId = userId;
+      this._cardId = authorData.cardId;
+      this._authorId = authorData.authorId;
+
+      this._likes = this._card.likes;
+      this._handleDeleteLike = actions.handleDeleteLike;
+      this._handleDeleteClick = actions.handleDeleteClick;
+      this._handleSetLike = actions.handleSetLike;
+      this._handleViewCard = actions.handleViewCard;
    }
 
-   generateCard() {
-      this._cardTemplate = document.querySelector(this._templateCard).content
-         .querySelector('.card').cloneNode(true);
+   //шаблон карточки
+   _getTemplate() {
+      this._card = document
+         .querySelector(this._templateCard)
+         .content
+         .querySelector('.card')
+         .cloneNode(true);
 
-      this._buttonLike = this._cardTemplate.querySelector('.card__button-like');
-      this._buttonDeleted = this._cardTemplate.querySelector('.card__button-deleted');
-      this._cardDescription = this._cardTemplate.querySelector('.card__description');
-      this._cardImage = this._cardTemplate.querySelector('.card__image');
-     
-      this._cardImage.src = this._link;
-      this._cardDescription.textContent = this._name;
-      this._cardImage.alt = this._name;
-
-      this._setEventListeners();
-      return this._cardTemplate;
+      return this._card;
    }
 
-   //метод лайка
-   _handleLikeCard() {
-      this._buttonLike.classList.toggle('card__button-like_active');
-   }
-
-   //метод удалить
-   _handleDeleteCard() {
+   //удаление карточки
+   deleteCard() {
       this._cardTemplate.remove();
       this._cardTemplate = null;
    }
 
-   //слушатели лайка, удаления, увеличеения
+   generateCard() {
+      this._cardTemplate = this._getTemplate();
+
+      this._buttonLike = this._cardTemplate.querySelector('.card__button-like');
+      this._likesNumber = this._cardTemplate.querySelector('.card__like-counter');
+      this._buttonDeleted = this._cardTemplate.querySelector('.card__button-deleted');
+      this._cardImage = this._cardTemplate.querySelector('.card__image');
+
+      this._cardTemplate.querySelector('.card__description').textContent = this._name;
+      this._cardImage.src = this._link;
+      this._cardImage.alt = this._name;
+
+      this._deleteButtonCard();
+      this._likedCard();
+      this._likesNumber.textContent = this._likes.length;
+      this._setEventListeners();
+
+      return this._cardTemplate;
+   }
+
+   //проверка лайка на карточке
+   _likedCard() {
+      if (this._likes.some((user) => {
+         return this._userId === user._id;
+      })) {
+         this._buttonLike.classList.add('card__button-like_active');
+      }
+   }
+
+   handleLikeCard(data) {
+      this._likes = data.likes;
+      this._likesNumber.textContent = this._likes.length;
+      this._buttonLike.classList.toggle('card__button-like_active');
+   }
+
    _setEventListeners() {
-
+     
       this._buttonLike.addEventListener('click', () => {
-         this._handleLikeCard();
+         if (this._buttonLike.classList.contains('card__button-like_active')) {
+            this._handleDeleteLike(this._cardId);
+         } else {
+            this._handleSetLike(this._cardId);
+         }
       })
 
-      this._buttonDeleted.addEventListener('click', () => {
-         this._handleDeleteCard();
-      })
+      this._cardImage.addEventListener('click', () => this._handleViewCard(this._name, this._link));
+      if (this._userId === this._authorId) {
+         this._buttonDeleted.addEventListener('click', () => this._handleDeleteClick(this._cardId));
+      } else {
+         this._buttonDeleted.remove();
+      }
 
-      this._cardImage.addEventListener('click', () => {
-         this._handleCardClick(this._link, this._name);
-      })
+   }
+
+   //убираем кнопку удалить
+   _deleteButtonCard() {
+      if (this._userId !== this._cardOwnerId) {
+         this._buttonDeleted.remove();
+      }
    }
 }
